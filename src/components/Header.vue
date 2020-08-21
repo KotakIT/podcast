@@ -1,6 +1,6 @@
 <template>
   <main class="pb-3">
-    <img :src="image" width="90" class="float-left mr-3 rounded" />
+    <img src="/img/icons/kotakit-192x192.png" width="90" class="float-left mr-3 rounded" />
     <h2 class="mb-0">{{ title }}</h2>
     <!-- <span>Obrolan it dan internet things</span> -->
     <span>{{ description }}</span>
@@ -10,11 +10,11 @@
 <script>
 export default {
   props: {
-    image: String,
+    // image: String,
     description: String,
-    title: String,
+    title: String
   },
-  name: "Header",
+  name: "Header"
 };
 </script>
 
