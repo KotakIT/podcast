@@ -2,7 +2,7 @@
   <main>
     <div class="row justify-content-center">
       <div class="col-lg-4 col-md-5 col-sm-8">
-        <div class="container  pt-3 bg-dark">
+        <div class="container pt-3 bg-dark">
           <Header
             :description="rssData.description[0]"
             :image="rssData.image[0].url[0]"
@@ -44,7 +44,7 @@
             class="text-center mb-5"
             v-html="rssData.item[0].description[0]"
           ></div>
-          <div class="list-group pb-5">
+          <div class="list-group pb-5 overflow">
             <router-link
               :to="
                 '/episode/' +
@@ -61,6 +61,9 @@
               class="list-group-item list-group-item-action"
             >
               {{ episode.title[0] }}
+              <div style="font-size:13px">
+                {{ changeDate(episode.pubDate[0]) }} - {{ fromNow(episode.pubDate[0])}}
+              </div>
             </router-link>
           </div>
         </div>
@@ -74,9 +77,15 @@
   background-color: #8940fa;
   border-color: #8940fa;
 }
+
+.overflow {
+  height:390px;
+  overflow-y: scroll;
+}
 </style>
 <script>
 import axios from "axios";
+import moment from "moment";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 export default {
@@ -91,6 +100,13 @@ export default {
     };
   },
   methods: {
+    changeDate(date){
+      return moment(date).format('ll');
+    },
+    fromNow(date){
+      const tgl = moment(date).format('YYYYMMDD');
+      return moment(tgl, "YYYYMMDD").fromNow();
+    },
     async cek() {
       var parseString = require("xml2js").parseString;
       // var self = this;
