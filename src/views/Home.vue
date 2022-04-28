@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-700 min-w-screen">
-    <div class="flex justify-center">
+    <div class="flex justify-center" v-if="rssData.length != 0">
       <div class="w-full md:w-1/2 lg:w-1/3 min-h-screen bg-gray-900 p-4">
         <Header
           :description="rssData.description[0]"
